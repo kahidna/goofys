@@ -73,17 +73,17 @@ func Mount(
 		Transport: &http.Transport{
 			Proxy: http.ProxyFromEnvironment,
 			DialContext: (&net.Dialer{
-				Timeout:   30 * time.Second,
-				KeepAlive: 30 * time.Second,
+				Timeout:   3600 * time.Second,
+				KeepAlive: 3600 * time.Second,
 				DualStack: true,
 			}).DialContext,
 			MaxIdleConns:          1000,
 			MaxIdleConnsPerHost:   1000,
-			IdleConnTimeout:       90 * time.Second,
-			TLSHandshakeTimeout:   10 * time.Second,
-			ExpectContinueTimeout: 10 * time.Second,
+			IdleConnTimeout:       9600 * time.Second,
+			TLSHandshakeTimeout:   30 * time.Second,
+			ExpectContinueTimeout: 30 * time.Second,
 		},
-		Timeout: 30 * time.Second,
+		Timeout: 3600 * time.Second,
 	})
 
 	if len(flags.Profile) > 0 {
